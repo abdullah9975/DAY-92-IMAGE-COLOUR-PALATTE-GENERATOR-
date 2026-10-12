@@ -1,0 +1,94 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Color Analysis Results</title>-->
+<!--    &lt;!&ndash; Include Bootstrap CSS (optional) &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <style>-->
+<!--        .color-box {-->
+<!--            width: 50px;-->
+<!--            height: 50px;-->
+<!--            display: inline-block;-->
+<!--            border: 1px solid;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container mt-5">-->
+<!--        <h1>Color Analysis Results</h1>-->
+
+<!--        &lt;!&ndash; Display uploaded image &ndash;&gt;-->
+<!--        <div class="mb-4">-->
+<!--            <h2>Uploaded Image</h2>-->
+<!--            <img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded Image" class="img-fluid">-->
+<!--        </div>-->
+
+<!--        <h2>Most Common Colors</h2>-->
+<!--        <ul class="list-group">-->
+<!--            {% for color in colors %}-->
+<!--                <li class="list-group-item">-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <div class="mr-3 color-box" style="background-color:{{ color[1] }}"></div>-->
+<!--                        <div>-->
+<!--                            <div>{{ color[0] }}</div>-->
+<!--                            <div>{{ color[1] }}</div>-->
+<!--                            <div>{{ color[2] }} occurrences</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            {% endfor %}-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Analysis Results</title>
+    <!-- Include Bootstrap CSS (optional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .color-box {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="{{ url_for('uploaded_file', filename=image_filename) }}" class="card-img-top" alt="Uploaded Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Color Codes</h5>
+                        <ul class="list-group">
+                            {% for color in colors %}
+                                <li class="list-group-item">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3 color-box" style="background-color:{{ color[1] }}"></div>
+                                        <div>
+                                            <div>{{ color[0] }}</div>
+                                            <div>{{ color[1] }}</div>
+                                            <div>{{ color[2] }} occurrences</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{url_for('index')}}" class="btn btn-primary">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
